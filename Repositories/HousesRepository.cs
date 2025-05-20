@@ -1,4 +1,5 @@
 
+
 namespace gregslist_dotnet.Repositories;
 
 public class HousesRepository
@@ -22,5 +23,13 @@ public class HousesRepository
       return house;
     }).ToList();
     return houses;
+  }
+
+  internal House GetHouseById(int houseId)
+  {
+    string sql = @"SELECT * FROM houses WHERE id = @houseId;";
+
+    House house = _db.Query<House>(sql, new { houseId }).SingleOrDefault();
+    return house;
   }
 }
