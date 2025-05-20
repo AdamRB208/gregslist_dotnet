@@ -129,3 +129,7 @@ VALUES (
     );
 
 SELECT * FROM houses;
+
+SELECT houses.*, accounts.*
+FROM houses
+    JOIN accounts ON houses.creator_id = accounts.id;
