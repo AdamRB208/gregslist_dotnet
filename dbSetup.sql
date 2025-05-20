@@ -11,6 +11,10 @@ CREATE TABLE IF NOT EXISTS accounts (
     picture VARCHAR(255) COMMENT 'User Picture'
 ) default charset utf8mb4 COMMENT '';
 
+SELECT * FROM accounts;
+
+-- CAR SECTION STARTS HERE!!!!!
+
 CREATE TABLE cars (
     -- NOTE make sure your id column is the first column you define
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -63,8 +67,6 @@ VALUES (
         '670ff93326693293c631476f'
     );
 
-SELECT * FROM accounts;
-
 SELECT * FROM cars;
 
 -- NOTE JOIN is how we include multiple rows of data on the same row
@@ -99,3 +101,31 @@ CREATE TABLE houses (
     creator_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (creator_id) REFERENCES accounts (id) ON DELETE CASCADE
 );
+
+DROP TABLE houses;
+
+INSERT INTO
+    houses (
+        sqft,
+        bedrooms,
+        bathrooms,
+        imgUrl,
+        description,
+        price,
+        year,
+        levels,
+        creator_id
+    )
+VALUES (
+        2300,
+        4,
+        4,
+        "https://images.unsplash.com/photo-1628744448839-a475cc0e90c3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1vZGVybiUyMGhvdXNlfGVufDB8fDB8fHwy",
+        "A newly built modern home",
+        1800000,
+        2024,
+        2,
+        "67e592b83f3192a0a5480d98"
+    );
+
+SELECT * FROM houses;
