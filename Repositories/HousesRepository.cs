@@ -27,9 +27,13 @@ public class HousesRepository
 
   internal House GetHouseById(int houseId)
   {
-    string sql = @"SELECT * FROM houses WHERE id = @houseId;";
+    string sql = @"SELECT houses.*, accounts.* FROM houses JOIN accounts ON houses.creator_id = accounts.id WHERE houses.id = @houseId;";
 
-    House house = _db.Query<House>(sql, new { houseId }).SingleOrDefault();
+    House house = _db.Query(sql, (House house, Account account) =>
+    {
+      house.Creator = account;
+      return house;
+    }, new { houseId }).SingleOrDefault();
     return house;
   }
 }
