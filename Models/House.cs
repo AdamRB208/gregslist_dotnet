@@ -6,7 +6,7 @@ public class House
 {
   public int Id { get; set; }
 
-  [Range(0, 30)] public int Sqft { get; set; }
+  [Range(0, 100000)] public int Sqft { get; set; }
 
   [Range(0, 25)] public int Bedrooms { get; set; }
 

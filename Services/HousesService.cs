@@ -33,4 +33,12 @@ public class HousesService
 
     return house;
   }
+
+  internal string DeleteHouse(int houseId, string userId)
+  {
+    House house = GetHouseById(houseId);
+    if (house.CreatorId != userId) throw new Exception("This is not your House!");
+    _housesRepository.DeleteHouse(houseId);
+    return $"Deleted the {house.Description} {house.Year} listing!";
+  }
 }
